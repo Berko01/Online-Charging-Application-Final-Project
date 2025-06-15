@@ -94,6 +94,66 @@ The **OCS Project** (Online Charging System) is a distributed, scalable telecomm
 
 ---
 
+---
+
+## ☁️ AWS Deployment Architecture
+
+![AWS Architecture](./Pictures/aws.png)
+
+The OCS system is deployed on **Amazon Web Services (AWS)** using a secure and scalable infrastructure. The deployment is structured within a Virtual Private Cloud (VPC), separating public and private subnets for better isolation and control.
+
+**Key Components:**
+
+- EC2 instances for service hosting  
+- Application Load Balancer (ALB) for routing traffic  
+- NAT Gateway for secure outbound internet access  
+- S3 for asset storage  
+- IAM roles and security groups for controlled access  
+- Multi-AZ setup for high availability
+
+All cloud resources are provisioned automatically using Terraform.
+
+---
+
+## 🛠️ Infrastructure as Code – Terraform
+
+![Terraform](./Pictures/terraform.png)
+
+**Terraform** is used to define and provision the entire AWS infrastructure. It enables consistent, repeatable, and version-controlled deployments across environments.
+
+**What Terraform Manages:**
+
+- VPC, Subnets (Public/Private)  
+- EC2 Instances, Elastic IPs, NAT Gateway  
+- Route Tables, Internet Gateway  
+- Load Balancer & Target Groups  
+- IAM Roles & Policies  
+- S3 Buckets and Security Groups
+
+Terraform modules are structured for reusability and clarity. Infrastructure changes are tracked and deployed through declarative `.tf` files.
+
+---
+
+## ⚙️ Configuration Management – Ansible
+
+![Ansible](./Pictures/ansible.png)
+
+**Ansible** handles all post-provisioning server configuration. Once the infrastructure is ready, Ansible playbooks automate the installation and setup of necessary services across all nodes.
+
+**Ansible Automates:**
+
+- Installation of Java, Docker, Kubernetes CLI tools  
+- Deployment of Jenkins, Nexus, SonarQube  
+- Configuration of service-specific environment variables  
+- Systemd service setups for custom modules  
+- Role-based task execution with idempotent playbooks
+
+This ensures consistent configuration, eliminates manual steps, and supports fully automated system provisioning.
+
+---
+
+
+
 ### **Mobile App**
 
 ![Mobile App](./Pictures/mobileapp.png)
@@ -129,6 +189,7 @@ The **OCS Project** (Online Charging System) is a distributed, scalable telecomm
 * **Hazelcast Management Center**
 * **Ignite Dashboard**
 * **Kafdrop** for Kafka topic inspection.
+
 
 ## 📜 License
 
