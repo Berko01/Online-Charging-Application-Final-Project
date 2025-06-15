@@ -134,9 +134,11 @@ Terraform modules are structured for reusability and clarity. Infrastructure cha
 
 ---
 
+---
+
 ## ⚙️ Configuration Management – Ansible
 
-![Ansible](./Pictures/ansible.png)
+<img src="./Pictures/ansible.png" width="480" height="240" alt="Ansible Diagram" />
 
 **Ansible** handles all post-provisioning server configuration. Once the infrastructure is ready, Ansible playbooks automate the installation and setup of necessary services across all nodes.
 
@@ -151,6 +153,7 @@ Terraform modules are structured for reusability and clarity. Infrastructure cha
 This ensures consistent configuration, eliminates manual steps, and supports fully automated system provisioning.
 
 ---
+
 
 
 
