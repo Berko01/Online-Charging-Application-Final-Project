@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'ansible', url: 'https://github.com/RamazanAkdag/Online-Charging-Application-Final-Project'
+                git branch: 'master', url: 'https://github.com/RamazanAkdag/Online-Charging-Application-Final-Project'
             }
         }
 
@@ -45,14 +45,14 @@ pipeline {
                 sh '''
                     SONAR_TOKEN=$(cat /opt/secrets/sonarqube_secret)
                     SONAR_HOST=$(cat /opt/secrets/sonarqube_ip)
-
+        
                     $SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectName=OCS \
                         -Dsonar.projectKey=OCS \
                         -Dsonar.java.binaries=. \
                         -Dsonar.token=$SONAR_TOKEN \
                         -Dsonar.host.url=http://$SONAR_HOST:9000 \
-                        -Dsonar.exclusions=settings.xml,trivy-fs-report.html \
+                        -Dsonar.exclusions=**/settings.xml,**/trivy-fs-report.html,**/trivy-scan-*.html \
                     | tee sonar-log.txt
                 '''
             }

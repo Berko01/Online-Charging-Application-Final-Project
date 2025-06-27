@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: kafka-headless
 spec:
-  clusterIP: None
+  clusterIP: None                      # Headless service
   selector:
     app: kafka
   ports:
-    - port: 9092
-      name: broker
+    - name: broker
+      port: 9092
+    - name: internal
+      port: 29092
